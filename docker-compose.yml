@@ -1,0 +1,72 @@
+version: '3.3'
+
+networks:
+  network:
+    ipam:
+      config:
+        - subnet: 172.18.0.0/24
+          gateway: 172.18.0.1
+
+services:
+  mysql:
+    image: 'mysql'
+    container_name: 'mysql'
+    volumes:
+      - ./mysql:/var/lib/mysql
+    restart: always
+    ports:
+      - '7306:3306'
+    command: --sql_mode='STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION'
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_DATABASE: diplomacy
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: mysql
+    networks:
+      network:
+        ipv4_address: 172.18.0.2
+
+  phpmyadmin:
+    image: 'phpmyadmin'
+    container_name: 'phpmyadmin'
+    restart: always
+    ports:
+      - '7080:80'
+    environment:
+      PMA_ARBITRARY: '1'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      UPLOAD_LIMIT: '500M'
+    depends_on:
+      - mysql
+    networks:
+      network:
+        ipv4_address: 172.18.0.3
+  
+  front-end:
+    container_name: 'front-end'
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    ports:
+      - '7005:3000'
+    volumes:
+      - './front-end:/app'
+    command: sh -c "npm install && npm config set legacy-peer-deps true && npm install -g npm@9.1.2 && npx next dev"
+    networks:
+      network:
+        ipv4_address: 172.18.0.4
+
+  back-end:
+    container_name: 'back-end'
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    ports:
+      - '7006:8000'
+    volumes:
+      - './back-end/:/var/www/symfony/'
+    command: sh -c "composer update && symfony server:start"
+    networks:
+      network:
+        ipv4_address: 172.18.0.5
