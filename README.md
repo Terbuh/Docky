@@ -6,7 +6,7 @@ Instalacja
 Aby uruchomić projekt, wykonaj poniższe kroki:
 
 Pobierz kod źródłowy z repozytorium.
-1. git clone https://github.com/twoj-repozytorium/tablica-uzytkownikow.git
+1. git clone https://github.com/Terbuh/Docky](https://github.com/Terbuh/Docky.git
 2. cd tablica-uzytkownikow
 Uruchom Docker Compose, aby zainstalować wszystkie niezbędne paczki.
 3. "docker-compose up"
