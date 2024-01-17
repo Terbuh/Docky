@@ -8,8 +8,8 @@ Aby uruchomić projekt, wykonaj poniższe kroki:
 Pobierz kod źródłowy z repozytorium.
 1. git clone --recursive https://github.com/Terbuh/Docky.git
 2. cd Docky
-Uruchom Docker Compose, aby zainstalować wszystkie niezbędne paczki.
-3. "docker-compose up"
+
+3. Uruchom Docker Compose, aby zainstalować wszystkie niezbędne paczki. ==> "docker-compose up"
 Aplikacja zostanie uruchomiona, a strona będzie dostępna pod adresem http://localhost:7005/userTable.
 
 Użytkowanie
