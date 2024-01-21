@@ -1,12 +1,17 @@
-[submodule "back"]
-	path = back
-	url = https://github.com/Terbuh/back-end.git
-[submodule "front"]
-	path = front
-	url = https://github.com/Terbuh/front-end.git
+# [submodule "back"]
+# 	path = back
+# 	url = https://github.com/Terbuh/back-end.git
+# [submodule "front"]
+# 	path = front
+# 	url = https://github.com/Terbuh/front-end.git
 [submodule "front-end"]
 	path = front-end
 	url = https://github.com/Terbuh/front-end.git
+	branch = main
+# [submodule "back-end"]
+# 	path = back-end
+# 	url = https://github.com/Terbuh/back-end.git
 [submodule "back-end"]
-	path = back-end
-	url = https://github.com/Terbuh/back-end.git
+    path = back-end
+    url = https://github.com/Terbuh/back-end.git
+    branch = main
