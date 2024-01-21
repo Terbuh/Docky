@@ -46,7 +46,7 @@ services:
   front-end:
     container_name: 'front-end'
     build:
-      dockerfile: Dockerfile
+      dockerfile: front-end/Dockerfile
       context: ./
     ports:
       - '7005:3000'
@@ -60,7 +60,7 @@ services:
   back-end:
     container_name: 'back-end'
     build:
-      dockerfile: Dockerfile
+      dockerfile: back-end/Dockerfile
       context: ./
     ports:
       - '7006:8000'
